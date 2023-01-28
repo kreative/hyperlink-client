@@ -62,12 +62,12 @@ export default function HomeSplashComponent() {
           // sets the new hyperlink and extension that came back into state
           const newExtension = response.data.data.link.extension;
           const newHyperlink = `https://khyper.link/${newExtension}`;
-          
+
           setExtension(newExtension);
           setHyperlink(newHyperlink);
 
           // shows success alert box with the new hyperlink
-          setSuccessStyles("sm:mx-auto sm:max-w-screen-md")
+          setSuccessStyles("sm:mx-auto sm:max-w-screen-md");
         })
         .catch((error) => {
           console.log(error);
@@ -79,8 +79,8 @@ export default function HomeSplashComponent() {
   return (
     <div className="border-b-2 border-gray-200">
       <div className="mx-auto max-w-7xl px-6 lg:px-8" aria-label="Top">
-        <div id="splash-section" className="pt-36 pb-52">
-          <h1 className="text-black text-center font-bold text-8xl">
+        <div id="splash-section" className="sm:pt-36 sm:pb-52 pt-12 pb-24">
+          <h1 className="text-black text-center font-bold lg:text-8xl md:text-6xl text-5xl">
             Create, track, and analyze your links at{" "}
             <span className="italic">hyperspeed</span>
           </h1>
@@ -94,9 +94,12 @@ export default function HomeSplashComponent() {
             <ErrorAlertComponent message={errorMessage} />
           </div>
           <div id="success-alert" className={successStyles}>
-            <SuccessAlertComponent extension={extension} hyperlink={hyperlink} />
+            <SuccessAlertComponent
+              extension={extension}
+              hyperlink={hyperlink}
+            />
           </div>
-          <form className="mt-4 sm:mx-auto sm:flex sm:max-w-screen-md">
+          <form className="mt-4 lg:max-w-screen-md md:max-w-screen-sm sm:mx-auto sm:flex max-w-screen-md">
             <div className="min-w-0 flex-1">
               <label htmlFor="url" className="sr-only">
                 URL
@@ -121,22 +124,24 @@ export default function HomeSplashComponent() {
               </button>
             </div>
           </form>
-          <p className="text-center pt-4 text-sm text-gray-400">
-            By clicking Create Hyperlink, you agree to Kreative Hyperlink's{" "}
-            <Link
-              href="/legal/terms-and-conditions"
-              className="underline underline-offset-2 hover:text-blue-800"
-            >
-              Terms and Conditions
-            </Link>{" "}
-            and{" "}
-            <Link
-              href="/legal/privacy-policy"
-              className="underline underline-offset-2 hover:text-blue-800"
-            >
-              Privacy Policy
-            </Link>
-          </p>
+          <div>
+            <p className="text-center pt-4 text-sm text-gray-400">
+              By clicking Create Hyperlink, you agree to Kreative Hyperlink's{" "}
+              <Link
+                href="/legal/terms-and-conditions"
+                className="underline underline-offset-2 hover:text-blue-800"
+              >
+                Terms and Conditions
+              </Link>{" "}
+              and{" "}
+              <Link
+                href="/legal/privacy-policy"
+                className="underline underline-offset-2 hover:text-blue-800"
+              >
+                Privacy Policy
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>
