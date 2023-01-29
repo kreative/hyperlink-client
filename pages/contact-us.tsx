@@ -22,7 +22,7 @@ export default function ContactUs() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-      <div className="sticky top-0 bg-white bg-opacity-80 backdrop-blur-md z-10">
+        <div className="sticky top-0 bg-white bg-opacity-80 backdrop-blur-md z-10">
           <div className="tablet:block hidden">
             <NavbarComponent />
           </div>
@@ -78,21 +78,21 @@ export default function ContactUs() {
               <div className="pt-16 mt-20 border-t-2 border-t-gray-200">
                 <p className="font-sans text-gray-500">
                   If you're running into technical issues, please submit a
-                  ticket at Kreative Support, and our team will take care
-                  of you write away.
+                  ticket at Kreative Support, and our team will take care of you
+                  write away.
                 </p>
                 <div className="pt-12">
-                <Link
-                  href={"https://support.kreativeusa.com/hyperlink"}
-                  className="inline-flex rounded-md border border-blue-800 py-3 px-5 text-base font-medium text-blue-800"
-                >
-                  <span className="-mt-0.5">Submit a support ticket</span>
-                  <ArrowTopRightOnSquareIcon
-                    className="ml-2 h-5 w-5"
-                    aria-hidden="true"
-                  />
-                </Link>
-              </div>
+                  <Link
+                    href={"https://support.kreativeusa.com/hyperlink"}
+                    className="inline-flex rounded-md border border-blue-800 py-3 px-5 text-base font-medium text-blue-800"
+                  >
+                    <span className="-mt-0.5">Submit a support ticket</span>
+                    <ArrowTopRightOnSquareIcon
+                      className="ml-2 h-5 w-5"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
