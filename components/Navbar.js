@@ -36,8 +36,8 @@ export default function NavbarComponent() {
               Sign up
             </Link>
             <Link
-              href={"#"}
-              className="inline-flex rounded-md border border-transparent bg-blue-800 py-2 px-4 text-base font-medium text-white"
+              href="/dashboard"
+              className="inline-flex rounded-md border border-transparent bg-hyper-blue-primary hover:bg-hyper-blue-secondary py-2 px-4 text-base font-medium text-white"
             >
               Dashboard
               <ArrowRightIcon className="ml-2 -mr-0.5 h-6 w-6" aria-hidden="true" />

@@ -22,7 +22,7 @@ export default function Navbar2() {
           </a>
         </div>
         <div className="-my-2 -mr-2 tablet:hidden">
-          <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+          <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-hyper-blue-primary">
             <span className="sr-only">Open menu</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </Popover.Button>
@@ -50,7 +50,7 @@ export default function Navbar2() {
           </a>
           <a
             href="/dashboard"
-            className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+            className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-hyper-blue-primary px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-hyper-blue-secondary"
           >
             Dashboard
             <ArrowRightIcon
@@ -88,7 +88,7 @@ export default function Navbar2() {
                   </a>
                 </div>
                 <div className="-mr-2">
-                  <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                  <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-hyper-blue-primary">
                     <span className="sr-only">Close menu</span>
                     <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                   </Popover.Button>
@@ -131,7 +131,7 @@ export default function Navbar2() {
               <div className="mt-6">
                 <Link
                   href="/dashboard"
-                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-hyper-blue-primary px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-hyper-blue-secondary"
                 >
                   Dashboard
                   <ArrowRightIcon
@@ -139,12 +139,11 @@ export default function Navbar2() {
                     aria-hidden="true"
                   />
                 </Link>
-
                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                   New to Hyperlink?{" "}
                   <Link
                     href="#"
-                    className="text-indigo-600 hover:text-indigo-500"
+                    className="text-hyper-blue-secondary hover:text-hyper-blue-primary"
                   >
                     Sign up
                   </Link>

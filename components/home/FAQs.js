@@ -32,7 +32,7 @@ export default function HomeFAQsComponent() {
               Can’t find the answer you’re looking for? Reach out to our{" "}
               <Link
                 href={"https://support.kreativeusa.com/hyperlink"}
-                className="font-semibold text-indigo-600 hover:text-indigo-500"
+                className="font-semibold text-hyper-blue-primary hover:text-hyper-blue-secondary"
               >
                 customer support
               </Link>{" "}

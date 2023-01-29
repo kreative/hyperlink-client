@@ -50,7 +50,7 @@ export default function HomeFeaturesComponent() {
     <div id="features" className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-lg font-semibold font-mono uppercase leading-8 tracking-tight text-indigo-600">
+          <h2 className="text-lg font-semibold font-mono uppercase leading-8 tracking-tight text-hyper-blue-primary">
             Everything you need
           </h2>
           <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -83,7 +83,7 @@ export default function HomeFeaturesComponent() {
             <div key={feature.name} className="relative pl-9">
               <dt className="inline font-semibold text-gray-900">
                 <feature.icon
-                  className="absolute top-1 left-1 h-5 w-5 text-indigo-600"
+                  className="absolute top-1 left-1 h-5 w-5 text-hyper-blue-secondary"
                   aria-hidden="true"
                 />
                 {feature.name}

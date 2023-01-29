@@ -32,7 +32,7 @@ export default function ContactUs() {
         </div>
         <div className="mx-auto max-w-5xl px-6 lg:px-8" aria-label="Top">
           <div className="py-24 md:px-12 ">
-            <h2 className="text-lg font-semibold font-mono uppercase leading-8 tracking-tight text-indigo-600 md:text-center text-left">
+            <h2 className="text-lg font-semibold font-mono uppercase leading-8 tracking-tight text-hyper-blue-primary md:text-center text-left">
               Contact us
             </h2>
             <h1 className="text-black text-left md:text-center font-bold text-6xl md:text-8xl pb-24">
@@ -66,7 +66,7 @@ export default function ContactUs() {
               <div className="pt-12">
                 <Link
                   href={"mailto:hyperlink@kreativeusa.com"}
-                  className="inline-flex rounded-md border border-transparent bg-blue-800 py-3 px-5 text-base font-medium text-white"
+                  className="inline-flex rounded-md border border-transparent bg-hyper-blue-primary hover:bg-hyper-blue-secondary py-3 px-5 text-base font-medium text-white"
                 >
                   <PencilSquareIcon
                     className="mr-2 h-5 w-5"

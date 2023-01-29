@@ -5,7 +5,7 @@ export default function CTAComponent() {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl lg:py-12 px-6 sm:py-24 lg:px-8">
-        <div className="relative isolate overflow-hidden bg-gradient-to-r from-sky-500 to-indigo-500 px-6 py-24 text-center shadow-2xl rounded-3xl sm:px-16">
+        <div className="relative isolate overflow-hidden bg-gradient-to-r from-hyper-purple-primary to-hyper-blue-primary px-6 py-24 text-center shadow-2xl rounded-3xl sm:px-16">
           <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-white">
             Design your perfect Hyperlink today
           </h2>

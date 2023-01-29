@@ -117,7 +117,7 @@ export default function HomeSplashComponent() {
                 value={url}
                 name="url"
                 required
-                className="block w-full rounded-md border px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600"
+                className="block w-full rounded-md border px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-hyper-blue-primary"
                 placeholder="Enter your URL..."
                 onChange={(e) => setUrl(e.target.value)}
               />
@@ -125,7 +125,7 @@ export default function HomeSplashComponent() {
             <div className="mt-4 sm:mt-0 sm:ml-3">
               <button
                 onClick={(e) => createHyperlink(e)}
-                className="block w-full rounded-md border border-transparent bg-blue-800 px-5 py-3 text-base font-medium text-white shadow hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 sm:px-10"
+                className="block w-full rounded-md border border-transparent bg-hyper-blue-primary px-5 py-3 text-base font-medium text-white shadow hover:bg-hyper-blue-secondary focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-hyper-blue-primary sm:px-10"
               >
                 Create Hyperlink
               </button>
