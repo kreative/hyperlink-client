@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import NavbarComponent from "@/components/Navbar";
+import Navbar2Component from "@/components/Navbar2";
 import FooterComponent from "@/components/Footer";
 import CTAComponent from "@/components/CTA";
 
@@ -21,16 +22,23 @@ export default function ContactUs() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <NavbarComponent />
+      <div className="sticky top-0 bg-white bg-opacity-80 backdrop-blur-md z-10">
+          <div className="tablet:block hidden">
+            <NavbarComponent />
+          </div>
+          <div className="tablet:hidden visible">
+            <Navbar2Component />
+          </div>
+        </div>
         <div className="mx-auto max-w-5xl px-6 lg:px-8" aria-label="Top">
-          <div className="py-24 px-12">
-            <h2 className="text-lg font-semibold font-mono uppercase leading-8 tracking-tight text-indigo-600 text-center">
+          <div className="py-24 md:px-12 ">
+            <h2 className="text-lg font-semibold font-mono uppercase leading-8 tracking-tight text-indigo-600 md:text-center text-left">
               Contact us
             </h2>
-            <h1 className="text-black text-center font-bold text-8xl pb-24">
+            <h1 className="text-black text-left md:text-center font-bold text-6xl md:text-8xl pb-24">
               Drop us a line
             </h1>
-            <div className="text-center text-2xl">
+            <div className="text-left md:text-center text-2xl">
               <Link
                 href="mailto:hyperlink@kreativeusa.com"
                 className="inline-flex hover:underline underline-offset-2"
@@ -38,7 +46,7 @@ export default function ContactUs() {
                 <EnvelopeIcon className="w-8 h-8 mr-3" aria-hidden="true" />
                 <span className="-mt-0.5">hyperlink@kreativeusa.com</span>
               </Link>
-              <div className="text-center text-2xl">
+              <div className="text-left md:text-center text-2xl">
                 <Link
                   href="mailto:hyperlink@kreativeusa.com"
                   className="inline-flex hover:underline underline-offset-2"
