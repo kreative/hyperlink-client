@@ -80,7 +80,7 @@ export default function HomeSplashComponent() {
     <div className="border-b-2 border-gray-200">
       <div className="mx-auto max-w-7xl px-6 lg:px-8" aria-label="Top">
         <div id="splash-section" className="sm:pt-36 sm:pb-52 pt-12 pb-24">
-          <h1 className="text-black text-center font-bold lg:text-8xl md:text-6xl text-5xl">
+          <h1 className="text-black text-center font-bold lg:text-8xl md:text-7xl text-5xl">
             Create, track, and analyze your links at{" "}
             <span className="italic">hyperspeed</span>
           </h1>
