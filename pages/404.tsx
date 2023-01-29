@@ -1,6 +1,7 @@
 import Head from "next/head";
 import FooterComponent from "@/components/Footer";
 import NavbarComponent from "@/components/Navbar";
+import Navbar2Component from "@/components/Navbar2";
 
 export default function NotFoundPage() {
   return (
@@ -11,7 +12,14 @@ export default function NotFoundPage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavbarComponent />
+      <div className="sticky top-0 bg-white bg-opacity-80 backdrop-blur-md z-10">
+          <div className="tablet:block hidden">
+            <NavbarComponent />
+          </div>
+          <div className="tablet:hidden visible">
+            <Navbar2Component />
+          </div>
+        </div>
       <div className="bg-white py-56 px-6 md:grid md:place-items-center lg:px-8">
         <div className="mx-auto max-w-max">
           <main className="sm:flex">
