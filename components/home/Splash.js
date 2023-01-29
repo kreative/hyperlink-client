@@ -72,6 +72,13 @@ export default function HomeSplashComponent() {
         .catch((error) => {
           console.log(error);
           // handles the errors that come back from the api, displays alerts/components for errors
+          // we find the status code or set it to 500 if for some reason there isn't one, this way we dont run into
+          // any sort of undefined error
+          const statusCode = error.response.data.statusCode || 500;
+
+          if (statusCode === 500) {
+            modifyErrorAlert("Internal server error. Please try again soon!");
+          }
         });
     }
   };
