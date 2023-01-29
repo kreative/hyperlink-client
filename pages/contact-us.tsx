@@ -77,7 +77,7 @@ export default function ContactUs() {
               </div>
               <div className="pt-16 mt-20 border-t-2 border-t-gray-200">
                 <p className="font-sans text-gray-500">
-                  If you're running into technical issues, please submit a
+                  If you&apos;re running into technical issues, please submit a
                   ticket at Kreative Support, and our team will take care of you
                   write away.
                 </p>

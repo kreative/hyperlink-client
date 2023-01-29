@@ -92,9 +92,9 @@ export default function HomeSplashComponent() {
             <span className="italic">hyperspeed</span>
           </h1>
           <p className="my-10 text-lg leading-8 text-gray-600 text-center lg:px-18 md:px-12 sm:px-0">
-            When your links get crazy long and you're sending thousands of
+            When your links get crazy long and you&apos;re sending thousands of
             customers all across the web, you need Kreative Hyperlink to keep an
-            eye on what links you're promoting and what your customers are
+            eye on what links you&apos;re promoting and what your customers are
             finding click-worthy!
           </p>
           <div id="error-alert" className={errorStyles}>
@@ -133,7 +133,7 @@ export default function HomeSplashComponent() {
           </form>
           <div>
             <p className="text-center pt-4 text-sm text-gray-400">
-              By clicking Create Hyperlink, you agree to Kreative Hyperlink's{" "}
+              By clicking Create Hyperlink, you agree to Kreative Hyperlink&apos;s{" "}
               <Link
                 href="/legal/terms-and-conditions"
                 className="underline underline-offset-2 hover:text-blue-800"

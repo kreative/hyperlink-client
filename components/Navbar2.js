@@ -12,14 +12,14 @@ export default function Navbar2Component() {
     <Popover>
       <div className="flex items-center justify-between p-6 tablet:justify-start tablet:space-x-10">
         <div className="flex justify-start lg:w-0 lg:flex-1">
-          <a href="/">
+          <Link href="/">
             <span className="sr-only">Kreative Hyperlink</span>
             <img
               className="h-8 w-auto tablet:h-10"
               src="/hyperlink-logo-color.png"
               alt=""
             />
-          </a>
+          </Link>
         </div>
         <div className="-my-2 -mr-2 tablet:hidden">
           <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-hyper-blue-primary">
@@ -28,27 +28,27 @@ export default function Navbar2Component() {
           </Popover.Button>
         </div>
         <Popover.Group as="nav" className="hidden space-x-10 tablet:flex">
-          <a
+          <Link
             href="/contact-us"
             className="text-base font-medium text-gray-500 hover:text-gray-900"
           >
             Contact us
-          </a>
-          <a
+          </Link>
+          <Link
             href="https://support.kreativeusa.com/hyperlink"
             className="text-base font-medium text-gray-500 hover:text-gray-900"
           >
             Get Support
-          </a>
+          </Link>
         </Popover.Group>
         <div className="hidden items-center justify-end tablet:flex tablet:flex-1 lg:w-0">
-          <a
+          <Link
             href="#"
             className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
           >
             Sign up
-          </a>
-          <a
+          </Link>
+          <Link
             href="/dashboard"
             className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-hyper-blue-primary px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-hyper-blue-secondary"
           >
@@ -57,7 +57,7 @@ export default function Navbar2Component() {
               className="ml-2 -mr-0.5 h-6 w-6"
               aria-hidden="true"
             />
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -78,14 +78,14 @@ export default function Navbar2Component() {
             <div className="px-5 pt-5 pb-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <a href="/">
+                  <Link href="/">
                     <span className="sr-only">Kreative Hyperlink</span>
                     <img
                       className="h-8 w-auto"
                       src="/hyperlink-logo-color.png"
                       alt="Kreative Hyperlink"
                     />
-                  </a>
+                  </Link>
                 </div>
                 <div className="-mr-2">
                   <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-hyper-blue-primary">
