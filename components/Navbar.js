@@ -3,14 +3,14 @@ import { ArrowRightIcon } from '@heroicons/react/20/solid'
 
 export default function NavbarComponent() {
   return (
-    <header className="sticky top-0 bg-white bg-opacity-80 backdrop-blur-md z-10">
+    <header>
       <nav className="mx-auto max-w-7xl px-6 lg:px-8" aria-label="Top">
         <div className="flex w-full items-center justify-between py-6">
           <div className="flex items-center">
             <Link href="/">
               <span className="sr-only">Kreative Hyperlink</span>
               <img
-                className="h-10 w-auto"
+                className="sm:h-10 w-auto h-8"
                 src="/hyperlink-logo-color.png"
                 alt=""
               />
