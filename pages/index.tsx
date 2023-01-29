@@ -5,6 +5,7 @@ import HomeFeaturesComponent from "@/components/home/Features";
 import HomeFAQsComponent from "@/components/home/FAQs";
 import CTAComponent from "@/components/CTA";
 import NavbarComponent from "@/components/Navbar";
+import Navbar2Component from "@/components/Navbar2";
 import FooterComponent from "@/components/Footer";
 
 export default function Home() {
@@ -17,7 +18,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <NavbarComponent />
+        <div className="sticky top-0 bg-white bg-opacity-80 backdrop-blur-md z-10">
+          <div className="tablet:block hidden">
+            <NavbarComponent />
+          </div>
+          <div className="tablet:hidden visible">
+            <Navbar2Component />
+          </div>
+        </div>
         <HomeSplashComponent />
         <HomeFeaturesComponent />
         <HomeFAQsComponent />
