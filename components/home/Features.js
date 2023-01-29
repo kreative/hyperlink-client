@@ -47,7 +47,7 @@ const features = [
 
 export default function HomeFeaturesComponent() {
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div id="features" className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl sm:text-center">
           <h2 className="text-lg font-semibold font-mono uppercase leading-8 tracking-tight text-indigo-600">
