@@ -6,7 +6,7 @@ export default function CTAComponent() {
     <div className="bg-white">
       <div className="mx-auto max-w-7xl lg:py-12 px-6 sm:py-24 lg:px-8">
         <div className="relative isolate overflow-hidden bg-gradient-to-r from-hyper-purple-primary to-hyper-blue-primary px-6 py-24 text-center shadow-2xl rounded-3xl sm:px-16">
-          <h2 className="text-lg font-semibold font-mono uppercase leading-8 pb-4 tracking-tight text-white">
+          <h2 className="text-mg font-semibold font-mono uppercase leading-8 pb-4 tracking-tight text-gray-200">
             GET STARTED NOW
           </h2>
           <h2 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-white">
