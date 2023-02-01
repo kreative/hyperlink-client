@@ -82,7 +82,7 @@ export default function AuthenticateComponent({ children, permissions }) {
               // internal server error
               // since there is something on the server side that isn't working reauthenticating wont work
               // instead we will redirect the user to an auth error page
-              window.location.href = "/error?cause=ise";
+              window.location.href = "https://id.kreativeusa.com/error?cause=ise";
             } else if (error.response.data.statusCode === 401) {
               // unauthorized exception, meaning that the keychain is expired
               // relocates to signin page with the callback for 'Kreative ID Test'
@@ -95,7 +95,7 @@ export default function AuthenticateComponent({ children, permissions }) {
             } else {
               // some sort of unknown error, possibly on the client side itseld
               console.log(error);
-              window.location.href = "/error?cause=unknown";
+              window.location.href = "https://id.kreativeusa.com/error?cause=unknown";
             }
           });
       }
