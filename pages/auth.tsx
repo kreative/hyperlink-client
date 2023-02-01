@@ -11,11 +11,11 @@ export default function AuthPage() {
   const router = useRouter();
   const { key } = router.query;
   const [cookies, setCookie, removeCookie] = useCookies(["kreative_id_key"]);
-  
+
   useEffect(() => {
     // ?? we never use this again, but it works, should we take it out ??
     let mounted = true;
-    
+
     // nothing happens unless the key query param loads
     if (!key) return;
 
@@ -43,7 +43,11 @@ export default function AuthPage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main />
+      <main>
+        <h1 className="pt-6 text-center text-gray-400">
+          We are signing you in... you should be redirected soon.
+        </h1>
+      </main>
     </>
-  )
+  );
 }
