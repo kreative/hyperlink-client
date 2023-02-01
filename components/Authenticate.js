@@ -86,12 +86,12 @@ export default function AuthenticateComponent({ children, permissions }) {
             } else if (error.response.data.statusCode === 401) {
               // unauthorized exception, meaning that the keychain is expired
               // relocates to signin page with the callback for 'Kreative ID Test'
-              window.location.href = `/signin?aidn=${AIDN}`;
+              window.location.href = `https://id.kreativeusa.com/signin?aidn=${AIDN}`;
             } else if (error.response.data.statusCode === 403) {
               // aidn given is not the same as the one on the keychain
               // this is a weird error that would even happen, so we will just reauthenticate the user
               // relocates to signin page with the callback for 'Kreative ID Test'
-              window.location.href = `/signin?aidn=${AIDN}`;
+              window.location.href = `https://id.kreativeusa.com/signin?aidn=${AIDN}`;
             } else {
               // some sort of unknown error, possibly on the client side itseld
               console.log(error);
