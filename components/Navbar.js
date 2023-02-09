@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRightIcon } from '@heroicons/react/20/solid'
+import Image from "next/image";
 
 export default function NavbarComponent() {
   return (
@@ -9,8 +10,10 @@ export default function NavbarComponent() {
           <div className="flex items-center">
             <Link href="/">
               <span className="sr-only">Kreative Hyperlink</span>
-              <img
+              <Image
                 className="sm:h-10 w-auto h-8"
+                width={300}
+                height={300}
                 src="/hyperlink-logo-color.png"
                 alt=""
               />

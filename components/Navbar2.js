@@ -6,6 +6,7 @@ import {
   ArrowRightIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar2Component() {
   return (
@@ -14,8 +15,10 @@ export default function Navbar2Component() {
         <div className="flex justify-start lg:w-0 lg:flex-1">
           <Link href="/">
             <span className="sr-only">Kreative Hyperlink</span>
-            <img
+            <Image
               className="h-8 w-auto tablet:h-10"
+              width={200}
+              height={200}
               src="/hyperlink-logo-color.png"
               alt=""
             />
