@@ -23,7 +23,7 @@ export default function AuthPage() {
     const executeCallback = async () => {
       console.log("callback: hello");
       // adds the cookie for the client side
-      setCookie("kreative_id_key", key, { secure: true });
+      setCookie("kreative_id_key", key, { secure: true, sameSite: "strict" });
       // redirects to the admin page for authentication flow to continue
       window.location.href = "/dashboard";
     };
