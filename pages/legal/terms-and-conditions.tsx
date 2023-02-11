@@ -9,7 +9,7 @@ export default function TermsAndConditions() {
   return (
     <>
       <Head>
-        <title>Kreative Hyperlink</title>
+        <title>Terms and Conditions | Kreative Hyperlink</title>
         <meta name="description" content="URL shortening service by Kreative" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
