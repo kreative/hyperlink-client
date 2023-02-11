@@ -83,8 +83,10 @@ export default function Navbar2Component() {
                 <div>
                   <Link href="/">
                     <span className="sr-only">Kreative Hyperlink</span>
-                    <img
+                    <Image
                       className="h-8 w-auto"
+                      width={200}
+                      height={100}
                       src="/hyperlink-logo-color.png"
                       alt="Kreative Hyperlink"
                     />
