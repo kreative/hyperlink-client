@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRightIcon } from '@heroicons/react/20/solid'
+import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 
 export default function NavbarComponent() {
@@ -26,12 +26,14 @@ export default function NavbarComponent() {
             >
               Contact us
             </Link>
-            <Link
+            <a
               href={"https://support.kreativeusa.com/hyperlink"}
               className="inline-block py-2 text-base font-medium text-black"
+              target={"_blank"}
+              rel={"noreferrer"}
             >
               Get support
-            </Link>
+            </a>
             <Link
               href={"#"}
               className="inline-block py-2 text-base font-medium text-black"
@@ -43,7 +45,10 @@ export default function NavbarComponent() {
               className="inline-flex rounded-md border border-transparent bg-hyper-blue-primary hover:bg-hyper-blue-secondary py-2 px-4 text-base font-medium text-white"
             >
               Dashboard
-              <ArrowRightIcon className="ml-2 -mr-0.5 h-6 w-6" aria-hidden="true" />
+              <ArrowRightIcon
+                className="ml-2 -mr-0.5 h-6 w-6"
+                aria-hidden="true"
+              />
             </Link>
           </div>
         </div>

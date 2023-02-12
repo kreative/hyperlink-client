@@ -27,12 +27,14 @@ export default function NavbarComponent() {
             >
               Contact us
             </Link>
-            <Link
+            <a
               href={"https://support.kreativeusa.com/hyperlink"}
               className="inline-block py-2 text-base font-medium text-black"
+              target={"_blank"}
+              rel={"noreferrer"}
             >
               Get support
-            </Link>
+            </a>
             <LogoutButton />
           </div>
         </div>
