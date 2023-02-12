@@ -4,6 +4,8 @@ import { useCookies } from "react-cookie";
 
 // the identifier for kreative hyperlink
 const AIDN = process.env.NEXT_PUBLIC_AIDN;
+// the secret appchain for kreative hyperlink
+const APPCHAIN = process.env.NEXT_PUBLIC_APPCHAIN;
 
 // this component will serve as custom "middleware" to authenticate certain pages
 // essentially, it will take all page components as children
@@ -40,6 +42,7 @@ export default function AuthenticateComponent({ children, permissions }) {
           .post("https://id-api.kreativeusa.com/v1/keychains/verify", {
             key: keyFromCookie,
             aidn: parseInt(AIDN),
+            appchain: APPCHAIN,
           })
           .then((response) => {
             console.log(response);

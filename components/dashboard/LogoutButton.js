@@ -20,7 +20,11 @@ export default function LogoutButton() {
     // closes the keychain using id-api
     axios
       .post(
-        `https://id-api.kreativeusa.com/v1/keychains/${cookies["keychain_id"]}/close`
+        `https://id-api.kreativeusa.com/v1/keychains/${cookies["keychain_id"]}/close`,
+        {
+          aidn: parseInt(process.env.NEXT_PUBLIC_AIDN),
+          appchain: process.env.NEXT_PUBLIC_APPCHAIN,
+        }
       )
       .then((response) => {
         // response status code is between 200-299
