@@ -36,7 +36,7 @@ export default function AuthenticateComponent({ children, permissions }) {
       } else {
         // gets the key from cookie and parses it as a string for the POST request
         const keyFromCookie = cookies["kreative_id_key"];
-        
+
         // runs a verify keychain request on the API
         axios
           .post("https://id-api.kreativeusa.com/v1/keychains/verify", {
@@ -59,15 +59,34 @@ export default function AuthenticateComponent({ children, permissions }) {
                 // we can't just say the user isn't authenticated, because they are, they just don't have the correct permissions
                 // FOR NOW we will handle the error by redirecting the user to the error page with a query param for the error
                 console.log("invalid permissions");
-                window.location.href = "https://id.kreativeusa.com/error?cause=permissions";
+                window.location.href =
+                  "https://id.kreativeusa.com/error?cause=permissions";
               } else {
                 // since we can't add headers, since we are executing this on the client side, we will just setup new cookies
-                setCookie('keychain_id', keychain.id, { secure: true, sameSite: 'strict' });
-                setCookie('id_ksn', account.ksn, { secure: true, sameSite: 'strict' });
-                setCookie('id_email', account.email, { secure: true, sameSite: 'strict' });
-                setCookie('id_fname', account.firstName, { secure: true, sameSite: 'strict' });
-                setCookie('id_lname', account.lastName), { secure: true, sameSite: 'strict' };
-                setCookie('id_picture', account.profilePicture, { secure: true, sameSite: 'strict' });
+                setCookie("keychain_id", keychain.id, {
+                  secure: true,
+                  sameSite: "strict",
+                });
+                setCookie("id_ksn", account.ksn, {
+                  secure: true,
+                  sameSite: "strict",
+                });
+                setCookie("id_email", account.email, {
+                  secure: true,
+                  sameSite: "strict",
+                });
+                setCookie("id_fname", account.firstName, {
+                  secure: true,
+                  sameSite: "strict",
+                });
+                setCookie("id_lname", account.lastName, {
+                  secure: true,
+                  sameSite: "strict",
+                });
+                setCookie("id_picture", account.profilePicture, {
+                  secure: true,
+                  sameSite: "strict",
+                });
 
                 // once all operations are completed, we set authenticated to true
                 setAuthenticated(true);
@@ -85,7 +104,8 @@ export default function AuthenticateComponent({ children, permissions }) {
               // internal server error
               // since there is something on the server side that isn't working reauthenticating wont work
               // instead we will redirect the user to an auth error page
-              window.location.href = "https://id.kreativeusa.com/error?cause=ise";
+              window.location.href =
+                "https://id.kreativeusa.com/error?cause=ise";
             } else if (error.response.data.statusCode === 401) {
               // unauthorized exception, meaning that the keychain is expired
               // relocates to signin page with the callback for 'Kreative ID Test'
@@ -98,7 +118,8 @@ export default function AuthenticateComponent({ children, permissions }) {
             } else {
               // some sort of unknown error, possibly on the client side itseld
               console.log(error);
-              window.location.href = "https://id.kreativeusa.com/error?cause=unknown";
+              window.location.href =
+                "https://id.kreativeusa.com/error?cause=unknown";
             }
           });
       }
