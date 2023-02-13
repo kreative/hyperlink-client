@@ -79,8 +79,10 @@ export default function AuthenticateComponent({ children, permissions }) {
                   secure: true,
                   sameSite: "strict",
                 });
-                setCookie("id_lname", account.lastName),
-                  { secure: true, sameSite: "strict" };
+                setCookie("id_lname", account.lastName, {
+                  secure: true,
+                  sameSite: "strict",
+                });
                 setCookie("id_picture", account.profilePicture, {
                   secure: true,
                   sameSite: "strict",
