@@ -133,7 +133,8 @@ export default function HomeSplashComponent() {
           </form>
           <div>
             <p className="text-center pt-4 text-sm text-gray-400">
-              By clicking Create Hyperlink, you agree to Kreative Hyperlink&apos;s{" "}
+              By clicking Create Hyperlink, you agree to Kreative
+              Hyperlink&apos;s{" "}
               <Link
                 href="/legal/terms-and-conditions"
                 className="underline underline-offset-2 hover:text-blue-800"

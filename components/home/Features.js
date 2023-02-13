@@ -23,7 +23,8 @@ const features = [
   },
   {
     name: "Editable target URLs.",
-    description: "Modify where each short Hyperlink redirects to anytime, instead of having to create a whole new link",
+    description:
+      "Modify where each short Hyperlink redirects to anytime, instead of having to create a whole new link",
     icon: Cog6ToothIcon,
   },
   {
@@ -55,7 +56,8 @@ export default function HomeFeaturesComponent() {
             Everything you need
           </h2>
           <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Shrink your links on a dependable platform with features you&apos;ll love
+            Shrink your links on a dependable platform with features you&apos;ll
+            love
           </p>
           <p className="mt-6 text-lg leading-8 text-gray-600">
             With Kreative Hyperlink, you can quickly create lightning-fast short

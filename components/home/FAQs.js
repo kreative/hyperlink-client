@@ -9,8 +9,7 @@ const faqs = [
   },
   {
     question: "Can I connect a custom, short domain name?",
-    answer:
-      `We hope to introduce this feature in the future, but currently links only use the 'khyper.link' domain name. If custom domain names are critical for your URL shortening needs, we recommend you checkout Rebrandly.com`,
+    answer: `We hope to introduce this feature in the future, but currently links only use the 'khyper.link' domain name. If custom domain names are critical for your URL shortening needs, we recommend you checkout Rebrandly.com`,
   },
   {
     question: "Is Kreative Hyperlink free?",
