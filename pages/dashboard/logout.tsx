@@ -1,8 +1,8 @@
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import { cookies, setCookie, removeCookie, useCookies } from "react-cookie";
 import axios from "axios";
+import { useEffect } from "react";
 
-export default function LogoutButton() {
+export default function Logout(): JSX.Element {
   const [cookies, setCookie, removeCookie] = useCookies([
     "kreative_id_key",
     "keychain_id",
@@ -13,16 +13,13 @@ export default function LogoutButton() {
     "id_picture",
   ]);
 
-  const logout = (e) => {
-    // prevents default button click behavior
-    e.preventDefault();
-
+  useEffect(() => {
     // closes the keychain using id-api
     axios
       .post(
         `https://id-api.kreativeusa.com/v1/keychains/${cookies["keychain_id"]}/close`,
         {
-          aidn: parseInt(process.env.NEXT_PUBLIC_AIDN),
+          aidn: parseInt(process.env.NEXT_PUBLIC_AIDN as string),
           appchain: process.env.NEXT_PUBLIC_APPCHAIN,
         }
       )
@@ -77,16 +74,7 @@ export default function LogoutButton() {
           window.location.href = `https://id.kreativeusa.com/error?cause=unknown&aidn=${NEXT_PUBLIC_AIDN}`;
         }
       });
-  };
+  }, []);
 
-  return (
-    <button
-      type="button"
-      className="inline-flex rounded-md border-2 border-hyper-blue-primary py-2 px-4 text-base font-medium text-hyper-blue-primary"
-      onClick={(e) => logout(e)}
-    >
-      Logout
-      <ArrowRightIcon className="ml-2 -mr-0.5 h-6 w-6" aria-hidden="true" />
-    </button>
-  );
+  return <></>;
 }
