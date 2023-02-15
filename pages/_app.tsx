@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import localFont from "@next/font/local";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 // custom craftwork sans font loading locally
 const craftworkSans = localFont({
@@ -48,6 +49,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <div className={`${craftworkSans.variable} font-sans`}>
         <Component {...pageProps} />
       </div>
+      <ReactQueryDevtools />
     </QueryClientProvider>
   );
 }
