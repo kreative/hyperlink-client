@@ -45,7 +45,6 @@ export default function AuthenticateComponent({ children, permissions }) {
             appchain: APPCHAIN,
           })
           .then((response) => {
-            console.log(response);
             // successful response from the server, should be code 200 (maybe 201)
             if (response.data.statusCode === 200) {
               const account = response.data.data.account;
