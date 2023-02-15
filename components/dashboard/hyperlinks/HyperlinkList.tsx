@@ -78,11 +78,9 @@ export default function HyperlinkList() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [fetchNextPage, hasNextPage]);
 
-  console.log(data);
-  console.log(isSuccess);
-
   return (
     <div>
+      <h1>{isSuccess.toString()}</h1>
       <ul role="list" className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {isSuccess &&
           data?.pages.map((page: any) =>
