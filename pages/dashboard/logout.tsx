@@ -1,6 +1,8 @@
-import { cookies, setCookie, removeCookie, useCookies } from "react-cookie";
+import { useCookies } from "react-cookie";
 import axios from "axios";
 import { useEffect } from "react";
+
+const NEXT_PUBLIC_AIDN = process.env.NEXT_PUBLIC_AIDN;
 
 export default function Logout(): JSX.Element {
   const [cookies, setCookie, removeCookie] = useCookies([
