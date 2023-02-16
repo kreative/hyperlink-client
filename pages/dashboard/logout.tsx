@@ -1,9 +1,9 @@
-import { cookies, setCookie, removeCookie, useCookies } from "react-cookie";
+import { useCookies } from "react-cookie";
 import axios from "axios";
 import { useEffect } from "react";
 
 export default function Logout(): JSX.Element {
-  const [cookies, setCookie, removeCookie] = useCookies([
+  const [cookies, _, removeCookie] = useCookies([
     "kreative_id_key",
     "keychain_id",
     "id_ksn",
