@@ -80,14 +80,12 @@ export default function HyperlinkList() {
 
   return (
     <div>
-      <h1>{isSuccess.toString()}</h1>
       <ul role="list" className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {isSuccess &&
-          data?.pages.map((page: any) =>
-            page.links.map((hyperlink: IHyperlink) => {
-              <HyperlinkItem key={hyperlink.id} hyperlink={hyperlink} />;
-            })
-          )}
+        {isSuccess && data?.pages.map((page: any) => (
+            page.links.map((hyperlink: IHyperlink) => (
+              <HyperlinkItem key={hyperlink.id} hyperlink={hyperlink} />
+            ))
+          ))}
       </ul>
       <div className="pt-6">
         {isFetchingNextPage && <p className="text-center py-4">Fetching...</p>}
