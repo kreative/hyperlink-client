@@ -5,7 +5,7 @@ import { useEffect } from "react";
 const NEXT_PUBLIC_AIDN = process.env.NEXT_PUBLIC_AIDN;
 
 export default function Logout(): JSX.Element {
-  const [cookies, setCookie, removeCookie] = useCookies([
+  const [cookies, _, removeCookie] = useCookies([
     "kreative_id_key",
     "keychain_id",
     "id_ksn",

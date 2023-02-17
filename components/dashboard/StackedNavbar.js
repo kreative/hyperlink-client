@@ -2,15 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { cookies, setCookie, removeCookie, useCookies } from "react-cookie";
-
-const user = {
-  name: "Tom Cook",
-  email: "tom@example.com",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useCookies } from "react-cookie";
 
 const userNavigation = [
   // TODO create a MyKreative profile page that takes in a KSN
@@ -25,14 +18,13 @@ function classNames(...classes) {
 }
 
 export default function StackedNavbar({ navigation }) {
-  const [cookies, setCookie, removeCookie] = useCookies([
+  const [cookies] = useCookies([
     "id_email",
     "id_fname",
     "id_lname",
     "id_picture",
   ]);
 
-  console.log(useCookies["id_picture"]);
   return (
     <div>
       <div className="min-h-full">
@@ -82,10 +74,12 @@ export default function StackedNavbar({ navigation }) {
                       <div>
                         <Menu.Button className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                           <span className="sr-only">Open user menu</span>
-                          <img
+                          <Image
                             className="h-8 w-8 rounded-full"
-                            src={cookies["id_picture"]}
-                            alt=""
+                            width={50}
+                            height={50}
+                            src={cookies.id_picture}
+                            alt="User profile picture"
                           />
                         </Menu.Button>
                       </div>
@@ -160,18 +154,20 @@ export default function StackedNavbar({ navigation }) {
                 <div className="border-t border-gray-200 pt-4 pb-3">
                   <div className="flex items-center px-4">
                     <div className="flex-shrink-0">
-                      <img
+                      <Image
                         className="h-10 w-10 rounded-full"
-                        src={cookies["id_picture"]}
-                        alt=""
+                        width={50}
+                        height={50}
+                        src={cookies.id_picture}
+                        alt="User profile picture"
                       />
                     </div>
                     <div className="ml-3">
                       <div className="text-base font-medium text-gray-800">
-                        {cookies["id_fname"] + " " + cookies["id_lname"]}
+                        {cookies.id_fname + " " + cookies.id_lname}
                       </div>
                       <div className="text-sm font-medium text-gray-500">
-                        {cookies["id_email"]}
+                        {cookies.id_email}
                       </div>
                     </div>
                   </div>

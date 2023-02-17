@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useCookies } from "react-cookie";
 
 import Authenticate from "@/components/Authenticate";
 
@@ -8,6 +9,8 @@ const appPermissions = ["KREATIVE_HYPERLINK_USER"];
 import StackedNavbar from "@/components/dashboard/StackedNavbar";
 
 export default function Dashboard() {
+  const [cookies] = useCookies(["id_fname"]);
+
   const navigation = [
     { name: "Dashboard", href: "/dashboard", current: true },
     { name: "Hyperlinks", href: "/dashboard/links", current: false },
@@ -26,7 +29,7 @@ export default function Dashboard() {
         <header>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900">
-              Dashboard
+              Welcome {cookies.id_fname}
             </h1>
           </div>
         </header>
