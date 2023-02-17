@@ -7,6 +7,7 @@ export interface IHyperlink {
   clickCount: number;
   favicon: string;
   titleTag: string;
+  public: boolean;
   active: boolean;
   ghost: boolean;
   ksn?: number;
