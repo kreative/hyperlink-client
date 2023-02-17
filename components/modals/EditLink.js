@@ -129,7 +129,7 @@ export default function EditLinkModal({ state, setState }) {
 
     // call the mutation
     editLinkMutation.mutate(extensionChanged);
-  }
+  };
 
   return (
     <Transition.Root show={state} as={Fragment}>
