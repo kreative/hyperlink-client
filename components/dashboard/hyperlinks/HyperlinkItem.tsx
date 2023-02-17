@@ -5,13 +5,21 @@ import { UsersIcon, CalendarIcon } from "@heroicons/react/20/solid";
 import { TrashIcon, PencilIcon } from "@heroicons/react/24/outline";
 import { IHyperlink } from "@/types/IHyperlink";
 import { deleteModalState } from "@/stores/deleteModalState";
+import { editModalState } from "@/stores/editModalState";
 import { hyperlinkData } from "@/stores/hyperlinkData";
 
 const HyperlinkItem: React.FC<{ hyperlink: IHyperlink }> = ({
   hyperlink,
 }): JSX.Element => {
+  const [editState, setEdit] = useAtom(editModalState);
   const [deleteState, setDelete] = useAtom(deleteModalState);
   const [hyperlinkDataState, setHyperlinkData] = useAtom(hyperlinkData);
+
+  const handleEditModal = (e: React.ChangeEvent<any>) => {
+    e.preventDefault();
+    setHyperlinkData(hyperlink);
+    setEdit(true);
+  }
 
   const handleDeleteModal = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
@@ -53,6 +61,7 @@ const HyperlinkItem: React.FC<{ hyperlink: IHyperlink }> = ({
               <button 
                 type="button"
                 className="focus:ring-0"
+                onClick={handleEditModal}
               >
                 <PencilIcon
                   className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400 hover:text-gray-600 -mb-0.5"

@@ -6,9 +6,11 @@ import { useEffect } from "react";
 
 import HyperlinkItem from "./HyperlinkItem";
 import DeleteLinkModal from "../../modals/DeleteLink";
+import EditLinkModal from "../../modals/EditLink";
 import QueryDescriptor from "../QueryDescriptor";
 import { IHyperlink } from "@/types/IHyperlink";
 import { deleteModalState } from "@/stores/deleteModalState";
+import { editModalState } from "@/stores/editModalState";
 import { queryDescriptorState } from "@/stores/queryDescriptorState";
 
 export default function HyperlinkList() {
@@ -16,6 +18,8 @@ export default function HyperlinkList() {
   const [cookies] = useCookies(["kreative_id_key"]);
   // global delete link modal state
   const [deleteState, setDelete] = useAtom(deleteModalState);
+  // global edit link modal state
+  const [editState, setEdit] = useAtom(editModalState);
   // amount of hyperlinks to be fetched per page
   // global state to manage query descriptor message
   const [queryDescription, setQueryDescription] = useAtom(queryDescriptorState);
@@ -96,6 +100,7 @@ export default function HyperlinkList() {
   return (
     <div>
       <DeleteLinkModal state={deleteState} setState={setDelete} />
+      <EditLinkModal state={editState} setState={setEdit} />
       <QueryDescriptor />
       <ul role="list" className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
         {isSuccess && data?.pages.map((page: any) => (
