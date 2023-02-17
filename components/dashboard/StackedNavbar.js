@@ -25,7 +25,6 @@ export default function StackedNavbar({ navigation }) {
     "id_picture",
   ]);
 
-  console.log(useCookies["id_picture"])
   return (
     <div>
       <div className="min-h-full">
