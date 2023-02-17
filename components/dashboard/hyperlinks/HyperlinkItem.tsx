@@ -1,15 +1,27 @@
 import Link from "next/link";
 import moment from "moment";
+import { useAtom } from "jotai";
 import { UsersIcon, CalendarIcon } from "@heroicons/react/20/solid";
 import { TrashIcon, PencilIcon } from "@heroicons/react/24/outline";
 import { IHyperlink } from "@/types/IHyperlink";
+import { deleteModalState } from "@/stores/deleteModalState";
+import { hyperlinkData } from "@/stores/hyperlinkData";
 
 const HyperlinkItem: React.FC<{ hyperlink: IHyperlink }> = ({
   hyperlink,
 }): JSX.Element => {
+  const [deleteState, setDelete] = useAtom(deleteModalState);
+  const [hyperlinkDataState, setHyperlinkData] = useAtom(hyperlinkData);
+
+  const handleDeleteModal = (e: React.ChangeEvent<any>) => {
+    e.preventDefault();
+    setHyperlinkData(hyperlink);
+    setDelete(true);
+  }
+
   return (
     <li key={hyperlink.id} className="border rounded-md">
-      <a href="#" className="block hover:bg-gray-50">
+      <Link href="#" className="block hover:bg-gray-50">
         <div className="px-4 py-4 sm:px-6">
           <div>
             <p className="truncate text-2xl font-medium">
@@ -38,16 +50,20 @@ const HyperlinkItem: React.FC<{ hyperlink: IHyperlink }> = ({
               </p>
             </div>
             <div>
-              <Link
-                href={`/dashboard/links/${hyperlink.id}/edit`}
-                className="inline-block"
+              <button 
+                type="button"
+                className="focus:ring-0"
               >
                 <PencilIcon
                   className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400 hover:text-gray-600 -mb-0.5"
                   aria-hidden="true"
                 />
-              </Link>
-              <button type="button">
+              </button>
+              <button 
+                type="button"
+                className="focus:ring-0"
+                onClick={handleDeleteModal}
+              >
                 <TrashIcon
                   className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400 hover:text-gray-600 -mb-0.5"
                   aria-hidden="true"
@@ -56,7 +72,7 @@ const HyperlinkItem: React.FC<{ hyperlink: IHyperlink }> = ({
             </div>
           </div>
         </div>
-      </a>
+      </Link>
     </li>
   );
 };

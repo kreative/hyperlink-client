@@ -1,15 +1,24 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useCookies } from "react-cookie";
+import { useAtom } from "jotai";
 import axios from "axios";
 import { useEffect } from "react";
 
-import { IHyperlink } from "@/types/IHyperlink";
 import HyperlinkItem from "./HyperlinkItem";
+import DeleteLinkModal from "../../modals/DeleteLink";
+import QueryDescriptor from "../QueryDescriptor";
+import { IHyperlink } from "@/types/IHyperlink";
+import { deleteModalState } from "@/stores/deleteModalState";
+import { queryDescriptorState } from "@/stores/queryDescriptorState";
 
 export default function HyperlinkList() {
   // gets kreative id key cookie for authenticating requests
   const [cookies] = useCookies(["kreative_id_key"]);
+  // global delete link modal state
+  const [deleteState, setDelete] = useAtom(deleteModalState);
   // amount of hyperlinks to be fetched per page
+  // global state to manage query descriptor message
+  const [queryDescription, setQueryDescription] = useAtom(queryDescriptorState);
   const limit = 21;
 
   const fetchHyperlinks = async (page: number) => {
@@ -35,9 +44,13 @@ export default function HyperlinkList() {
       throw new Error("Something went wrong with the server.");
     }
 
+    // gets the total links from the api response
+    const totalLinks = response.data.data.totalLinks;
+    // sets the query description based on totalLinks
+    setQueryDescription(`Showing ${totalLinks} Hyperlinks`);
+
     // sends back the data object which includes
     // totalLinks and array of hyperlinks
-    console.log(response.data.data);
     return response.data.data;
   };
 
@@ -82,6 +95,8 @@ export default function HyperlinkList() {
 
   return (
     <div>
+      <DeleteLinkModal state={deleteState} setState={setDelete} />
+      <QueryDescriptor />
       <ul role="list" className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
         {isSuccess && data?.pages.map((page: any) => (
             page.links.map((hyperlink: IHyperlink) => (
