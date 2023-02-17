@@ -99,7 +99,7 @@ export default function HyperlinkList() {
 
   return (
     <div>
-      <DeleteLinkModal state={deleteState} setState={setDelete} />
+      <DeleteLinkModal state={deleteState} setState={setDelete} isSingle={false} />
       <EditLinkModal state={editState} setState={setEdit} />
       <QueryDescriptor />
       <ul
