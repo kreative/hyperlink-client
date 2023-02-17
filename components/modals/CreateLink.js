@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 
+import { isValidUrl } from "../../utils/isValidUrl";
 import ErrorAlert from "../alerts/Error";
 
 export default function CreateLinkModal({ state, setState }) {
@@ -13,14 +14,12 @@ export default function CreateLinkModal({ state, setState }) {
 
   // state variables for creating a new hyperlink in the modal
   const [target, setTarget] = useState("");
+  // public visibility and toggle switch state
   const [isPublic, setIsPublic] = useState(false);
 
   // error alert message styles
   const [alertStyles, setAlertStyles] = useState("hidden");
   const [message, setMessage] = useState("");
-
-  // toggle switch state
-  const [enabled, setEnabled] = useState(false);
 
   const setOpen = (isOpen) => {
     setState(isOpen);
@@ -96,16 +95,6 @@ export default function CreateLinkModal({ state, setState }) {
       return;
     }
 
-    // url validation function
-    const isValidUrl = (url) => {
-      try {
-        new URL(url);
-        return true;
-      } catch (err) {
-        return false;
-      }
-    }
-
     // makes sure the url is valid if not show alert and break thread
     if (!isValidUrl(target)) {
       setMessage("Please make sure to enter a valid URL");
@@ -162,8 +151,8 @@ export default function CreateLinkModal({ state, setState }) {
                     <div id="new-hyperlink-form">
                       <div className="pb-2 pt-6">
                         <label
-                          htmlFor="appName"
-                          className="block text-left text-md font-medium text-gray-700"
+                          htmlFor="target"
+                          className="block text-left text-sm font-medium text-gray-700"
                         >
                           Target URL
                         </label>
@@ -192,10 +181,10 @@ export default function CreateLinkModal({ state, setState }) {
                         <div className="flex sm:col-span-3 justify-end mt-2">
                           <div>
                           <Switch
-                            checked={enabled}
-                            onChange={setEnabled}
+                            checked={isPublic}
+                            onChange={setIsPublic}
                             className={classNames(
-                              enabled ? "bg-indigo-600" : "bg-gray-200",
+                              isPublic ? "bg-indigo-600" : "bg-gray-200",
                               "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                             )}
                           >
@@ -203,13 +192,12 @@ export default function CreateLinkModal({ state, setState }) {
                             <span
                               aria-hidden="true"
                               className={classNames(
-                                enabled ? "translate-x-5" : "translate-x-0",
+                                isPublic ? "translate-x-5" : "translate-x-0",
                                 "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
                               )}
                             />
                           </Switch>
                           </div>
-                          
                         </div>
                       </div>
                     </div>
