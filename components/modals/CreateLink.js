@@ -180,23 +180,23 @@ export default function CreateLinkModal({ state, setState }) {
                         </div>
                         <div className="flex sm:col-span-3 justify-end mt-2">
                           <div>
-                          <Switch
-                            checked={isPublic}
-                            onChange={setIsPublic}
-                            className={classNames(
-                              isPublic ? "bg-indigo-600" : "bg-gray-200",
-                              "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                            )}
-                          >
-                            <span className="sr-only">Use setting</span>
-                            <span
-                              aria-hidden="true"
+                            <Switch
+                              checked={isPublic}
+                              onChange={setIsPublic}
                               className={classNames(
-                                isPublic ? "translate-x-5" : "translate-x-0",
-                                "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+                                isPublic ? "bg-indigo-600" : "bg-gray-200",
+                                "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                               )}
-                            />
-                          </Switch>
+                            >
+                              <span className="sr-only">Use setting</span>
+                              <span
+                                aria-hidden="true"
+                                className={classNames(
+                                  isPublic ? "translate-x-5" : "translate-x-0",
+                                  "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+                                )}
+                              />
+                            </Switch>
                           </div>
                         </div>
                       </div>
