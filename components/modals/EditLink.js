@@ -15,7 +15,7 @@ export default function EditLinkModal({ state, setState }) {
   const [cookies] = useCookies(["kreative_id_key"]);
 
   // global hyperlink state
-  const [hyperlink, setHyperlink] = useAtom(hyperlinkData);
+  const [hyperlink] = useAtom(hyperlinkData);
 
   // temporary states to hold changed data about the hyperlink
   const [target, setTarget] = useState("");

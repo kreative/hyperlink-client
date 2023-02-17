@@ -1,45 +1,58 @@
 import Head from "next/head";
-import { useCookies } from "react-cookie";
+import { useState } from "react";
 
 import Authenticate from "@/components/Authenticate";
+import StackedNavbar from "@/components/dashboard/StackedNavbar";
+import HyperlinkList from "@/components/dashboard/hyperlinks/HyperlinkList";
+import CreateLink from "@/components/modals/CreateLink";
 
 // any of the permissions that would allow the user to continue using the application
 const appPermissions = ["KREATIVE_HYPERLINK_USER"];
 
-import StackedNavbar from "@/components/dashboard/StackedNavbar";
-
-export default function Dashboard() {
-  const [cookies] = useCookies(["id_fname"]);
+export default function LinksDashboard() {
+  // state for create hyperlink modal
+  const [modalState, setModalState] = useState(false);
 
   const navigation = [
     { name: "Dashboard", href: "/dashboard", current: true },
-    { name: "Hyperlinks", href: "/dashboard/links", current: false },
   ];
 
   return (
     <Authenticate permissions={appPermissions}>
       <Head>
-        <title>Dashboard | Kreative Hyperlink</title>
+        <title>My Links | Kreative Hyperlink</title>
         <meta name="description" content="URL shortening service by Kreative" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <StackedNavbar navigation={navigation} />
+      <CreateLink state={modalState} setState={setModalState} />
       <div className="py-10">
         <header>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900">
-              Welcome {cookies.id_fname}
-            </h1>
+            <div className="md:flex md:items-center md:justify-between">
+              <div className="min-w-0 flex-1">
+                <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+                  My Hyperlinks
+                </h2>
+              </div>
+              <div className="mt-4 flex md:mt-0 md:ml-4">
+                <button
+                  type="button"
+                  className="ml-3 inline-flex items-center rounded-md border border-transparent bg-hyper-blue-primary px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-hyper-blue-secondary focus:outline-none focus:ring-2 focus:ring-hyper-blue-light focus:ring-offset-2"
+                  onClick={() => setModalState(true)}
+                >
+                  New Hyperlink
+                </button>
+              </div>
+            </div>
           </div>
         </header>
         <main>
           <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            {/* Replace with your content */}
             <div className="px-4 py-8 sm:px-0">
-              <div className="h-96 rounded-lg border-4 border-dashed border-gray-200" />
+              <HyperlinkList />
             </div>
-            {/* /End replace */}
           </div>
         </main>
       </div>

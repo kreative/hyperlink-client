@@ -1,5 +1,6 @@
 import { Fragment, useRef, useState } from "react";
-import { Dialog, Transition, Switch } from "@headlessui/react";
+import { useRouter } from "next/router";
+import { Dialog, Transition } from "@headlessui/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCookies } from "react-cookie";
 import { useAtom } from "jotai";
@@ -8,8 +9,9 @@ import axios from "axios";
 import ErrorAlert from "../alerts/Error";
 import { hyperlinkData } from "@/stores/hyperlinkData";
 
-export default function DeleteLinkModal({ state, setState }) {
+export default function DeleteLinkModal({ state, setState, isSingle }) {
   const cancelButtonRef = useRef(null);
+  const router = useRouter();
   const queryClient = useQueryClient();
   const [cookies] = useCookies(["kreative_id_key"]);
   const [hyperlink] = useAtom(hyperlinkData);
@@ -51,7 +53,12 @@ export default function DeleteLinkModal({ state, setState }) {
       // on successful api call, sets the state of the modal to false to close it
       // and invalidates the hyperlinks query to update the hyperlinks list
       setState(false);
-      queryClient.invalidateQueries("hyperlinks");
+      queryClient.invalidateQueries("hyperlinks")
+
+      if (isSingle) {
+        // if the modal is being used on the single link page, redirects to the dashboard
+        router.push("/dashboard");
+      }
     },
     onError: (error) => {
       // some sort of error occured with axios api call

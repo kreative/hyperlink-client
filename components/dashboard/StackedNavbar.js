@@ -35,20 +35,24 @@ export default function StackedNavbar({ navigation }) {
                 <div className="flex h-16 justify-between">
                   <div className="flex">
                     <div className="flex flex-shrink-0 items-center mr-6">
-                      <Image
-                        className="block h-8 w-auto lg:hidden"
-                        width={300}
-                        height={300}
-                        src="/hyperlink-logo-color.png"
-                        alt="Kreative Hyperlink logo in color"
-                      />
-                      <Image
-                        className="hidden h-8 w-auto lg:block"
-                        width={300}
-                        height={300}
-                        src="/hyperlink-logo-color.png"
-                        alt="Kreative Hyperlink logo in color"
-                      />
+                      <Link href="/dashboard">
+                        <Image
+                          className="block h-8 w-auto lg:hidden"
+                          width={300}
+                          height={300}
+                          src="/hyperlink-logo-color.png"
+                          alt="Kreative Hyperlink logo in color"
+                        />
+                      </Link>
+                      <Link href="/dashboard">
+                        <Image
+                          className="hidden h-8 w-auto lg:block"
+                          width={300}
+                          height={300}
+                          src="/hyperlink-logo-color.png"
+                          alt="Kreative Hyperlink logo in color"
+                        />
+                      </Link>
                     </div>
                     <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                       {navigation.map((item) => (
