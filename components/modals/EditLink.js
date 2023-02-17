@@ -20,6 +20,7 @@ export default function EditLinkModal({ state, setState }) {
   // temporary states to hold changed data about the hyperlink
   const [target, setTarget] = useState("");
   const [extension, setExtension] = useState("");
+  const [title, setTitle] = useState("");
   // public visibility and toggle switch state
   const [isPublic, setIsPublic] = useState(false);
 
@@ -33,6 +34,7 @@ export default function EditLinkModal({ state, setState }) {
     setAlertStyles("hidden");
     setTarget(hyperlink.target);
     setExtension(hyperlink.extension);
+    setTitle(hyperlink.titleTag);
     setIsPublic(hyperlink.public);
   }, [hyperlink]);
 
@@ -56,6 +58,7 @@ export default function EditLinkModal({ state, setState }) {
             target,
             extension,
             public: isPublic,
+            titleTag: title,
             extensionChanged,
           },
           {
@@ -95,7 +98,7 @@ export default function EditLinkModal({ state, setState }) {
     setAlertStyles("hidden");
 
     // makes sure all fields have values
-    if (target === "" || extension === "") {
+    if (target === "" || extension === "" || title === "") {
       setMessage("Please fill out all fields.");
       setAlertStyles("");
       return;
@@ -106,6 +109,7 @@ export default function EditLinkModal({ state, setState }) {
     if (
       target === hyperlink.target &&
       extension === hyperlink.extension &&
+      title === hyperlink.titleTag &&
       isPublic === hyperlink.public
     ) {
       setMessage("No changes were made.");
@@ -125,7 +129,7 @@ export default function EditLinkModal({ state, setState }) {
 
     // call the mutation
     editLinkMutation.mutate(extensionChanged);
-  }
+  };
 
   return (
     <Transition.Root show={state} as={Fragment}>
@@ -211,6 +215,26 @@ export default function EditLinkModal({ state, setState }) {
                             required
                             value={extension}
                             onChange={(e) => setExtension(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div className="pb-2 pt-3">
+                        <label
+                          htmlFor="title"
+                          className="block text-left text-sm font-medium text-gray-700"
+                        >
+                          Hyperlink title
+                        </label>
+                        <div className="mt-1">
+                          <input
+                            type="text"
+                            name="title"
+                            id="title"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            placeholder="Kreative USA - Radical Starts Here"
+                            required
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
                           />
                         </div>
                       </div>
