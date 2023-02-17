@@ -10,7 +10,7 @@ export default function HyperlinkList() {
   // gets kreative id key cookie for authenticating requests
   const [cookies] = useCookies(["kreative_id_key"]);
   // amount of hyperlinks to be fetched per page
-  const limit = 10;
+  const limit = 21;
 
   const fetchHyperlinks = async (page: number) => {
     // empty response object to be set
@@ -37,6 +37,7 @@ export default function HyperlinkList() {
 
     // sends back the data object which includes
     // totalLinks and array of hyperlinks
+    console.log(response.data.data);
     return response.data.data;
   };
 
@@ -51,7 +52,7 @@ export default function HyperlinkList() {
     queryKey: ["hyperlinks"],
     queryFn: ({ pageParam = 1 }) => fetchHyperlinks(pageParam),
     getNextPageParam: (lastPage, pages) => {
-      const maxPages: number = Math.ceil(lastPage.totaLinks / limit);
+      const maxPages: number = Math.ceil(lastPage.totalLinks / limit);
       if (pages.length < maxPages) return pages.length + 1;
       else return undefined;
     },
@@ -65,8 +66,9 @@ export default function HyperlinkList() {
         event.target.scrollingElement;
 
       // if the user is at the bottom of the page and react-query is not fetching
-      if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.2) {
+      if (!fetching && scrollHeight - scrollTop <= clientHeight ) {
         fetching = true;
+        console.log("fetching next page")
         if (hasNextPage || true) await fetchNextPage();
         fetching = false;
       }
@@ -80,7 +82,7 @@ export default function HyperlinkList() {
 
   return (
     <div>
-      <ul role="list" className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <ul role="list" className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
         {isSuccess && data?.pages.map((page: any) => (
             page.links.map((hyperlink: IHyperlink) => (
               <HyperlinkItem key={hyperlink.id} hyperlink={hyperlink} />
