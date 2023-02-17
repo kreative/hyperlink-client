@@ -9,8 +9,8 @@ import DeleteLinkModal from "../../modals/DeleteLink";
 import EditLinkModal from "../../modals/EditLink";
 import QueryDescriptor from "../QueryDescriptor";
 import { IHyperlink } from "@/types/IHyperlink";
-import { deleteModalState } from "@/stores/deleteModalState";
-import { editModalState } from "@/stores/editModalState";
+import { deleteModalState } from "@/stores/modals/deleteDashboard";
+import { editModalState } from "@/stores/modals/editDashboard";
 import { queryDescriptorState } from "@/stores/queryDescriptorState";
 
 export default function HyperlinkList() {
@@ -83,9 +83,9 @@ export default function HyperlinkList() {
         event.target.scrollingElement;
 
       // if the user is at the bottom of the page and react-query is not fetching
-      if (!fetching && scrollHeight - scrollTop <= clientHeight ) {
+      if (!fetching && scrollHeight - scrollTop <= clientHeight) {
         fetching = true;
-        console.log("fetching next page")
+        console.log("fetching next page");
         if (hasNextPage || true) await fetchNextPage();
         fetching = false;
       }
@@ -102,12 +102,16 @@ export default function HyperlinkList() {
       <DeleteLinkModal state={deleteState} setState={setDelete} />
       <EditLinkModal state={editState} setState={setEdit} />
       <QueryDescriptor />
-      <ul role="list" className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
-        {isSuccess && data?.pages.map((page: any) => (
+      <ul
+        role="list"
+        className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2"
+      >
+        {isSuccess &&
+          data?.pages.map((page: any) =>
             page.links.map((hyperlink: IHyperlink) => (
               <HyperlinkItem key={hyperlink.id} hyperlink={hyperlink} />
             ))
-          ))}
+          )}
       </ul>
       <div className="pt-6">
         {isFetchingNextPage && <p className="text-center py-4">Fetching...</p>}

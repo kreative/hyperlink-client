@@ -4,8 +4,8 @@ import { useAtom } from "jotai";
 import { UsersIcon, CalendarIcon } from "@heroicons/react/20/solid";
 import { TrashIcon, PencilIcon } from "@heroicons/react/24/outline";
 import { IHyperlink } from "@/types/IHyperlink";
-import { deleteModalState } from "@/stores/deleteModalState";
-import { editModalState } from "@/stores/editModalState";
+import { deleteModalState } from "@/stores/modals/deleteDashboard";
+import { editModalState } from "@/stores/modals/editDashboard";
 import { hyperlinkData } from "@/stores/hyperlinkData";
 
 const HyperlinkItem: React.FC<{ hyperlink: IHyperlink }> = ({
@@ -19,17 +19,20 @@ const HyperlinkItem: React.FC<{ hyperlink: IHyperlink }> = ({
     e.preventDefault();
     setHyperlinkData(hyperlink);
     setEdit(true);
-  }
+  };
 
   const handleDeleteModal = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
     setHyperlinkData(hyperlink);
     setDelete(true);
-  }
+  };
 
   return (
     <li key={hyperlink.id} className="border rounded-md">
-      <Link href="#" className="block hover:bg-gray-50">
+      <Link
+        href={`/dashboard/links/${hyperlink.id}`}
+        className="block hover:bg-gray-50"
+      >
         <div className="px-4 py-4 sm:px-6">
           <div>
             <p className="truncate text-2xl font-medium">
@@ -58,7 +61,7 @@ const HyperlinkItem: React.FC<{ hyperlink: IHyperlink }> = ({
               </p>
             </div>
             <div>
-              <button 
+              <button
                 type="button"
                 className="focus:ring-0"
                 onClick={handleEditModal}
@@ -68,7 +71,7 @@ const HyperlinkItem: React.FC<{ hyperlink: IHyperlink }> = ({
                   aria-hidden="true"
                 />
               </button>
-              <button 
+              <button
                 type="button"
                 className="focus:ring-0"
                 onClick={handleDeleteModal}
