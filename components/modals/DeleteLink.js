@@ -53,7 +53,7 @@ export default function DeleteLinkModal({ state, setState, isSingle }) {
       // on successful api call, sets the state of the modal to false to close it
       // and invalidates the hyperlinks query to update the hyperlinks list
       setState(false);
-      queryClient.invalidateQueries("hyperlinks")
+      queryClient.invalidateQueries("hyperlinks");
 
       if (isSingle) {
         // if the modal is being used on the single link page, redirects to the dashboard
