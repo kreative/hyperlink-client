@@ -40,7 +40,7 @@ export default function StackedNavbar({ navigation }) {
                           className="block h-8 w-auto lg:hidden"
                           width={300}
                           height={300}
-                          src="/hyperlink-logo-color.png"
+                          src="https://cdn.kreativeusa.com/hyperlink/hyperlink-logo-color.png"
                           alt="Kreative Hyperlink logo in color"
                         />
                       </Link>
@@ -49,7 +49,7 @@ export default function StackedNavbar({ navigation }) {
                           className="hidden h-8 w-auto lg:block"
                           width={300}
                           height={300}
-                          src="/hyperlink-logo-color.png"
+                          src="https://cdn.kreativeusa.com/hyperlink/hyperlink-logo-color.png"
                           alt="Kreative Hyperlink logo in color"
                         />
                       </Link>
