@@ -14,7 +14,7 @@ export default function NavbarComponent() {
                 className="sm:h-10 w-auto h-8"
                 width={300}
                 height={300}
-                src="/hyperlink-logo-color.png"
+                src="https://cdn.kreativeusa.com/hyperlink/hyperlink-logo-color.png"
                 alt=""
               />
             </Link>

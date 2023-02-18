@@ -19,7 +19,7 @@ export default function Navbar2Component() {
               className="h-8 w-auto tablet:h-10"
               width={200}
               height={200}
-              src="/hyperlink-logo-color.png"
+              src="https://cdn.kreativeusa.com/hyperlink/hyperlink-logo-color.png"
               alt=""
             />
           </Link>
@@ -89,7 +89,7 @@ export default function Navbar2Component() {
                       className="h-8 w-auto"
                       width={200}
                       height={100}
-                      src="/hyperlink-logo-color.png"
+                      src="https://cdn.kreativeusa.com/hyperlink/hyperlink-logo-color.png"
                       alt="Kreative Hyperlink"
                     />
                   </Link>
