@@ -114,7 +114,7 @@ export default function SingleLinkPage() {
                 <div className="mt-4 flex md:mt-0 md:ml-4">
                   <button
                     type="button"
-                    className="ml-3 inline-flex items-center rounded-md border border-transparent bg-red-400 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none"
+                    className="ml-3 inline-flex items-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none"
                     onClick={() => setDelete(true)}
                   >
                     <TrashIcon className="h-5 w-5 mr-2" />
