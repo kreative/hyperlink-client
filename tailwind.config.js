@@ -18,6 +18,7 @@ module.exports = {
         "hyper-blue-secondary": "#5684F9",
         "hyper-blue-light": "#BFD1FF",
         "hyper-purple-primary": "#2C33C9",
+        "hyper-purple-secondary": "#5A5FF9",
       },
     },
   },
