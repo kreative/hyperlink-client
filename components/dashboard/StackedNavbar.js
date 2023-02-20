@@ -3,7 +3,9 @@ import Link from "next/link";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useCookies } from "react-cookie";
+import { useAtom } from "jotai";
+
+import { accountStore } from "@/stores/accountStore";
 
 const userNavigation = [
   // TODO create a MyKreative profile page that takes in a KSN
@@ -18,12 +20,8 @@ function classNames(...classes) {
 }
 
 export default function StackedNavbar({ navigation }) {
-  const [cookies] = useCookies([
-    "id_email",
-    "id_fname",
-    "id_lname",
-    "id_picture",
-  ]);
+  // global account data state
+  const [account, setAccount] = useAtom(accountStore);
 
   return (
     <div>
@@ -82,7 +80,7 @@ export default function StackedNavbar({ navigation }) {
                             className="h-8 w-8 rounded-full"
                             width={50}
                             height={50}
-                            src={cookies.id_picture}
+                            src={account.profilePicture}
                             alt="User profile picture"
                           />
                         </Menu.Button>
@@ -162,16 +160,16 @@ export default function StackedNavbar({ navigation }) {
                         className="h-10 w-10 rounded-full"
                         width={50}
                         height={50}
-                        src={cookies.id_picture}
+                        src={account.profilePicture}
                         alt="User profile picture"
                       />
                     </div>
                     <div className="ml-3">
                       <div className="text-base font-medium text-gray-800">
-                        {cookies.id_fname + " " + cookies.id_lname}
+                        {account.firstName + " " + account.lastName}
                       </div>
                       <div className="text-sm font-medium text-gray-500">
-                        {cookies.id_email}
+                        {account.email}
                       </div>
                     </div>
                   </div>

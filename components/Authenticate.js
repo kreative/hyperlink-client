@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import { useAtom } from "jotai";
+
+import { accountStore } from "@/stores/accountStore";
 
 // the identifier for kreative hyperlink
 const AIDN = process.env.NEXT_PUBLIC_AIDN;
@@ -15,15 +18,9 @@ export default function AuthenticateComponent({ children, permissions }) {
   // this sets default state to not authenticate so that the function won't render until useEffect has run
   const [authenticated, setAuthenticated] = useState(false);
   // the single cookie we need for this function, stores the key for the user
-  const [cookies, setCookie, removeCookie] = useCookies([
-    "kreative_id_key",
-    "keychain_id",
-    "id_ksn",
-    "id_email",
-    "id_fname",
-    "id_lname",
-    "id_picture",
-  ]);
+  const [cookies, setCookie, removeCookie] = useCookies(["kreative_id_key", "keychain_id"]);
+  // global account data state
+  const [account, setAccount] = useAtom(accountStore);
 
   // in every Kreative application, this sort of function has to take place before
   // the actual business logic occurs, as there needs to be an authenticated user
@@ -66,26 +63,9 @@ export default function AuthenticateComponent({ children, permissions }) {
                   secure: true,
                   sameSite: "strict",
                 });
-                setCookie("id_ksn", account.ksn, {
-                  secure: true,
-                  sameSite: "strict",
-                });
-                setCookie("id_email", account.email, {
-                  secure: true,
-                  sameSite: "strict",
-                });
-                setCookie("id_fname", account.firstName, {
-                  secure: true,
-                  sameSite: "strict",
-                });
-                setCookie("id_lname", account.lastName, {
-                  secure: true,
-                  sameSite: "strict",
-                });
-                setCookie("id_picture", account.profilePicture, {
-                  secure: true,
-                  sameSite: "strict",
-                });
+
+                // sets the account data in the global state
+                setAccount(account);
 
                 // once all operations are completed, we set authenticated to true
                 setAuthenticated(true);

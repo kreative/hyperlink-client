@@ -1,18 +1,21 @@
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { useEffect } from "react";
+import { useAtom } from "jotai";
+
+import { IAccount } from "@/types/IAccount";
+import { accountStore } from "@/stores/accountStore";
 
 const NEXT_PUBLIC_AIDN = process.env.NEXT_PUBLIC_AIDN;
 
 export default function Logout(): JSX.Element {
+  // gets the global account store
+  const [account, setAccount] = useAtom(accountStore);
+  
+  // gets the needed cookies
   const [cookies, _, removeCookie] = useCookies([
     "kreative_id_key",
     "keychain_id",
-    "id_ksn",
-    "id_email",
-    "id_fname",
-    "id_lname",
-    "id_picture",
   ]);
 
   useEffect(() => {
@@ -33,11 +36,9 @@ export default function Logout(): JSX.Element {
         // deletes all cookies stored in local storage
         removeCookie("kreative_id_key");
         removeCookie("keychain_id");
-        removeCookie("id_ksn");
-        removeCookie("id_email");
-        removeCookie("id_fname");
-        removeCookie("id_lname");
-        removeCookie("id_picture");
+
+        // resets the global account data
+        setAccount({} as IAccount);
 
         // redirects user back to the home page
         // TODO design a better logout flow that notifies user that they have been logged out
