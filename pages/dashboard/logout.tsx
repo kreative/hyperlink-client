@@ -34,8 +34,8 @@ export default function Logout(): JSX.Element {
         console.log(response.data.data);
 
         // deletes all cookies stored in local storage
-        removeCookie("kreative_id_key");
-        removeCookie("keychain_id");
+        removeCookie("kreative_id_key", { path: "/" });
+        removeCookie("keychain_id", { path: "/" });
 
         // resets the global account data
         setAccount({} as IAccount);
