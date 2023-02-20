@@ -6,7 +6,8 @@ import { useAtom } from "jotai";
 import { IAccount } from "@/types/IAccount";
 import { accountStore } from "@/stores/accountStore";
 
-const NEXT_PUBLIC_AIDN = process.env.NEXT_PUBLIC_AIDN;
+const AIDN = process.env.NEXT_PUBLIC_AIDN;
+const APPCHAIN = process.env.APPCHAIN;
 
 export default function Logout(): JSX.Element {
   // gets the global account store
@@ -24,8 +25,8 @@ export default function Logout(): JSX.Element {
       .post(
         `https://id-api.kreativeusa.com/v1/keychains/${cookies["keychain_id"]}/close`,
         {
-          aidn: parseInt(process.env.NEXT_PUBLIC_AIDN as string),
-          appchain: process.env.NEXT_PUBLIC_APPCHAIN,
+          aidn: parseInt(AIDN as string),
+          appchain: APPCHAIN,
         }
       )
       .then((response) => {
@@ -59,22 +60,22 @@ export default function Logout(): JSX.Element {
           // for all of these errors we want to redirect the user to the error page with a cause
           if (statusCode === 403) {
             // bad request, probably the id was not passed or is not a number
-            window.location.href = `https://id.kreativeusa.com/error?cause=badrequest&aidn=${NEXT_PUBLIC_AIDN}`;
+            window.location.href = `https://id.kreativeusa.com/error?cause=badrequest&aidn=${AIDN}`;
           } else if (statusCode === 404) {
             // keychain not found using the id
-            window.location.href = `https://id.kreativeusa.com/error?cause=notfound&aidn=${NEXT_PUBLIC_AIDN}`;
+            window.location.href = `https://id.kreativeusa.com/error?cause=notfound&aidn=${AIDN}`;
           } else if (statusCode === 500) {
             // internal server error
-            window.location.href = `https://id.kreativeusa.com/error?cause=ise&aidn=${NEXT_PUBLIC_AIDN}`;
+            window.location.href = `https://id.kreativeusa.com/error?cause=ise&aidn=${AIDN}`;
           } else {
             // some weird unknown error
             // this should not happen at all, so if it does there are critical issues
-            window.location.href = `https://id.kreativeusa.com/error?cause=unknown&aidn=${NEXT_PUBLIC_AIDN}`;
+            window.location.href = `https://id.kreativeusa.com/error?cause=unknown&aidn=${AIDN}`;
           }
         } else {
           // if there is no error response status code then we have an "unknown error"
           // in most cases this is a connection error or some sort of axios error
-          window.location.href = `https://id.kreativeusa.com/error?cause=unknown&aidn=${NEXT_PUBLIC_AIDN}`;
+          window.location.href = `https://id.kreativeusa.com/error?cause=unknown&aidn=${AIDN}`;
         }
       });
   }, []);
