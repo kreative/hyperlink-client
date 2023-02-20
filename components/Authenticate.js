@@ -18,7 +18,10 @@ export default function AuthenticateComponent({ children, permissions }) {
   // this sets default state to not authenticate so that the function won't render until useEffect has run
   const [authenticated, setAuthenticated] = useState(false);
   // the single cookie we need for this function, stores the key for the user
-  const [cookies, setCookie, removeCookie] = useCookies(["kreative_id_key", "keychain_id"]);
+  const [cookies, setCookie, removeCookie] = useCookies([
+    "kreative_id_key",
+    "keychain_id",
+  ]);
   // global account data state
   const [account, setAccount] = useAtom(accountStore);
 
@@ -55,8 +58,7 @@ export default function AuthenticateComponent({ children, permissions }) {
                 // we can't just say the user isn't authenticated, because they are, they just don't have the correct permissions
                 // FOR NOW we will handle the error by redirecting the user to the error page with a query param for the error
                 console.log("invalid permissions");
-                window.location.href =
-                  `https://id.kreativeusa.com/error?cause=permissions&aidn=${AIDN}`;
+                window.location.href = `https://id.kreativeusa.com/error?cause=permissions&aidn=${AIDN}`;
               } else {
                 // since we can't add headers, since we are executing this on the client side, we will just setup new cookies
                 setCookie("keychain_id", keychain.id, {
@@ -81,8 +83,7 @@ export default function AuthenticateComponent({ children, permissions }) {
               // internal server error
               // since there is something on the server side that isn't working reauthenticating wont work
               // instead we will redirect the user to an auth error page
-              window.location.href =
-                `https://id.kreativeusa.com/error?cause=ise&aidn=${AIDN}`;
+              window.location.href = `https://id.kreativeusa.com/error?cause=ise&aidn=${AIDN}`;
             } else if (error.response.data.statusCode === 401) {
               // unauthorized exception, meaning that the keychain is expired
               // relocates to signin page with the callback for 'Kreative ID Test'
@@ -95,8 +96,7 @@ export default function AuthenticateComponent({ children, permissions }) {
             } else {
               // some sort of unknown error, possibly on the client side itseld
               console.log(error);
-              window.location.href =
-                `https://id.kreativeusa.com/error?cause=unknown&aidn=${AIDN}`;
+              window.location.href = `https://id.kreativeusa.com/error?cause=unknown&aidn=${AIDN}`;
             }
           });
       }
