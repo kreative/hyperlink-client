@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 
 // this is the callback page that Kreative ID (public authentication part) will go to after a successful auth flow
@@ -10,7 +10,7 @@ import { useCookies } from "react-cookie";
 export default function AuthPage() {
   const router = useRouter();
   const { key } = router.query;
-  const [cookies, setCookie, removeCookie] = useCookies(["kreative_id_key"]);
+  const [cookies, setCookie] = useCookies(["kreative_id_key"]);
 
   useEffect(() => {
     // ?? we never use this again, but it works, should we take it out ??
@@ -21,16 +21,20 @@ export default function AuthPage() {
 
     // function that executes business logic for callback auth flow
     const executeCallback = async () => {
-      console.log("callback: hello");
       // adds the cookie for the client side
-      setCookie("kreative_id_key", key, { secure: true, sameSite: "strict", path: "/" });
+      setCookie("kreative_id_key", key, {
+        secure: true,
+        sameSite: "strict",
+        path: "/",
+      });
+
       // redirects to the admin page for authentication flow to continue
       window.location.href = "/dashboard";
     };
 
     // takes the given key and creates a new cookie, then redirects user to admin page
     executeCallback();
-  }, [key]);
+  }, [key, setCookie]);
 
   return (
     <>
