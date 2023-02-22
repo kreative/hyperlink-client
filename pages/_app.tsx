@@ -3,6 +3,8 @@ import type { AppProps } from "next/app";
 import localFont from "@next/font/local";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { CookiesProvider } from "react-cookie";
+import { Provider } from "jotai";
 
 // custom craftwork sans font loading locally
 const craftworkSans = localFont({
@@ -46,9 +48,13 @@ const queryClient = new QueryClient();
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className={`${craftworkSans.variable} font-sans`}>
-        <Component {...pageProps} />
-      </div>
+      <Provider>
+        <CookiesProvider>
+          <div className={`${craftworkSans.variable} font-sans`}>
+            <Component {...pageProps} />
+          </div>
+        </CookiesProvider>
+      </Provider>
       <ReactQueryDevtools />
     </QueryClientProvider>
   );
