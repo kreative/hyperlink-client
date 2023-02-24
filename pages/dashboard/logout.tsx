@@ -12,7 +12,7 @@ const APPCHAIN = process.env.NEXT_PUBLIC_APPCHAIN;
 export default function Logout(): JSX.Element {
   // gets the global account store
   const [account, setAccount] = useAtom(accountStore);
-  
+
   // gets the needed cookies
   const [cookies, _, removeCookie] = useCookies([
     "kreative_id_key",
