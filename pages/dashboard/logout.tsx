@@ -19,13 +19,15 @@ export default function Logout(): JSX.Element {
     "keychain_id",
   ]);
 
+  const parsedAIDN = parseInt(AIDN as string);
+
   useEffect(() => {
     // closes the keychain using id-api
     axios
       .post(
         `https://id-api.kreativeusa.com/v1/keychains/${cookies["keychain_id"]}/close`,
         {
-          aidn: parseInt(AIDN as string),
+          aidn: parsedAIDN,
           appchain: APPCHAIN,
         }
       )
@@ -54,8 +56,8 @@ export default function Logout(): JSX.Element {
         // that isn't actually sent by the server api, but rather from axios
         let statusCode;
 
-        if (error.response.data.data.statusCode === undefined) {
-          statusCode = error.response.data.data.statusCode;
+        if (error.response.data.statusCode !== undefined) {
+          statusCode = error.response.data.statusCode;
 
           // for all of these errors we want to redirect the user to the error page with a cause
           if (statusCode === 403) {
