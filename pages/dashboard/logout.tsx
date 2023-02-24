@@ -7,7 +7,7 @@ import { IAccount } from "@/types/IAccount";
 import { accountStore } from "@/stores/accountStore";
 
 const AIDN = process.env.NEXT_PUBLIC_AIDN;
-const APPCHAIN = process.env.APPCHAIN;
+const APPCHAIN = process.env.NEXT_PUBLIC_APPCHAIN;
 
 export default function Logout(): JSX.Element {
   // gets the global account store
@@ -25,7 +25,7 @@ export default function Logout(): JSX.Element {
     // closes the keychain using id-api
     axios
       .post(
-        `https://id-api.kreativeusa.com/v1/keychains/${cookies["keychain_id"]}/close`,
+        `https://id-api.kreativeusa.com/v1/keychains/${cookies.keychain_id}/close`,
         {
           aidn: parsedAIDN,
           appchain: APPCHAIN,
@@ -34,7 +34,7 @@ export default function Logout(): JSX.Element {
       .then((response) => {
         // response status code is between 200-299
         // the only response that would come through is 200 (HTTP OK)
-        console.log(response.data.data);
+        console.log(response);
 
         // deletes all cookies stored in local storage
         removeCookie("kreative_id_key", { path: "/" });
