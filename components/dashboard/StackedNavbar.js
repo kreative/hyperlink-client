@@ -10,7 +10,7 @@ import { accountStore } from "@/stores/accountStore";
 const userNavigation = [
   // TODO create a Kreative Hyperlink settings page
   //{ name: 'Settings', href: '#' },
-  { name: 'Manage account', href: 'https://my.kreativeusa.com/account' },
+  { name: "Manage account", href: "https://my.kreativeusa.com/account" },
   { name: "Sign out", href: "/dashboard/logout" },
 ];
 
