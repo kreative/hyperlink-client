@@ -8,10 +8,9 @@ import { useAtom } from "jotai";
 import { accountStore } from "@/stores/accountStore";
 
 const userNavigation = [
-  // TODO create a MyKreative profile page that takes in a KSN
-  //{ name: 'Your profile', href: 'https://my.kreativeusa.com' },
   // TODO create a Kreative Hyperlink settings page
   //{ name: 'Settings', href: '#' },
+  { name: 'Manage account', href: 'https://my.kreativeusa.com/account' },
   { name: "Sign out", href: "/dashboard/logout" },
 ];
 
