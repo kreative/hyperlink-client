@@ -47,18 +47,18 @@ export default function AuthenticateComponent({ children, permissions }) {
           .unauthorized((error) => {
             // unauthorized exception, meaning that the keychain is expired
             // relocates to signin page with the callback for 'Kreative ID Test'
-            window.location.href = `/signin?aidn=${AIDN}&message=${error.message}`;
+            window.location.href = `https://id.kreativeusa.com/signin?aidn=${AIDN}&message=${error.message}`;
           })
           .forbidden((error) => {
             // aidn given is not the same as the one on the keychain
             // this is a weird error that would even happen, so we will just reauthenticate the user
             // relocates to signin page with the callback for 'Kreative ID Test'
-            window.location.href = `/signin?aidn=${AIDN}&message=${error.message}`;
+            window.location.href = `https://id.kreativeusa.com/signin?aidn=${AIDN}&message=${error.message}`;
           })
           .internalError((error) => {
             // since there is something on the server side that isn't working reauthenticating wont work
             // instead we will redirect the user to an auth error page
-            window.location.href = `/error?cause=ise&aidn=${AIDN}&message=${error.message}`;
+            window.location.href = `https://id.kreativeusa.com/error?cause=ise&aidn=${AIDN}&message=${error.message}`;
           })
           .res((response) => {
             const account = response.data.data.account;
@@ -76,7 +76,7 @@ export default function AuthenticateComponent({ children, permissions }) {
               // user does not have the correct permissions to continue
               // we can't just say the user isn't authenticated, because they are, they just don't have the correct permissions
               // FOR NOW we will handle the error by redirecting the user to the error page with a query param for the error
-              window.location.href = `/error?cause=permissions&aidn=${AIDN}`;
+              window.location.href = `https://id.kreativeusa.com/error?cause=permissions&aidn=${AIDN}`;
             } else {
               // since we can't add headers, since we are executing this on the client side, we will just setup new cookies
               setCookie("keychain_id", keychain.id, {
@@ -94,7 +94,7 @@ export default function AuthenticateComponent({ children, permissions }) {
           })
           .catch((error) => {
             // some sort of unknown error, possibly on the client side itself
-            window.location.href = `/error?cause=unknown&aidn=${AIDN}&message=${error.message}`;
+            window.location.href = `https://id.kreativeusa.com/error?cause=unknown&aidn=${AIDN}&message=${error.message}`;
           });
       }
     };
