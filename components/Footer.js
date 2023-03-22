@@ -42,12 +42,14 @@ export default function FooterComponent() {
           <Link
             href="https://kreativeusa.com"
             className="hover:underline underline-offset-2 hover:text-black"
+            target={"_blank"}
           >
             2023 Kreative, LLC. All rights reserved.
           </Link>{" "}
           <Link
             href="https://kreativedreamflow.com"
             className="hover:underline underline-offset-2 hover:text-indigo-700"
+            target={"_blank"}
           >
             Website made &hearts; with by Kreative Dreamflow.
           </Link>
