@@ -2,9 +2,15 @@ import Link from "next/link";
 
 const navigation = {
   main: [
-    { name: "Contact Us", href: "#" },
+    {
+      name: "Contact Us",
+      href: "https://support.kreativeusa.com/hyperlink#submit-issue",
+    },
     { name: "Get Support", href: "https://support.kreativeusa.com/hyperlink" },
-    { name: "Sign up", href: "#" },
+    {
+      name: "Sign up",
+      href: `https://id.kreativeusa.com/signup?aidn=${process.env.NEXT_PUBLIC_AIDN}`,
+    },
     { name: "Dashboard", href: "/dashboard" },
     { name: "Privacy Policy", href: "/legal/privacy-policy" },
     { name: "Terms & Conditions", href: "/legal/terms-and-conditions" },
@@ -24,6 +30,7 @@ export default function FooterComponent() {
               <Link
                 href={item.href}
                 className="text-md leading-6 text-gray-600 hover:text-gray-900"
+                target={item.href.startsWith("http") ? "_blank" : undefined}
               >
                 {item.name}
               </Link>
