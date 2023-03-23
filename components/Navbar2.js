@@ -151,7 +151,7 @@ export default function Navbar2Component() {
                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                   New to Hyperlink?{" "}
                   <Link
-                    href="#"
+                    href={`https://id.kreativeusa.com/signup?aidn=${process.env.NEXT_PUBLIC_AIDN}`}
                     className="text-hyper-blue-secondary hover:text-hyper-blue-primary"
                   >
                     Sign up

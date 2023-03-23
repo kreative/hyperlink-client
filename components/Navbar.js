@@ -35,7 +35,7 @@ export default function NavbarComponent() {
               Get support
             </a>
             <Link
-              href={"#"}
+              href={`https://id.kreativeusa.com/signup?aidn=${process.env.NEXT_PUBLIC_AIDN}`}
               className="inline-block py-2 text-base font-medium text-black"
             >
               Sign up
