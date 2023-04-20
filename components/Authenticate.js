@@ -47,18 +47,31 @@ export default function AuthenticateComponent({ children, permissions }) {
           .unauthorized((error) => {
             // unauthorized exception, meaning that the keychain is expired
             // relocates to signin page with the callback for 'Kreative ID Test'
+            removeCookie("kreative_id_key");
+            removeCookie("keychain_id");
             window.location.href = `https://id.kreativeusa.com/signin?aidn=${AIDN}&message=${error.message}`;
           })
           .forbidden((error) => {
             // aidn given is not the same as the one on the keychain
             // this is a weird error that would even happen, so we will just reauthenticate the user
             // relocates to signin page with the callback for 'Kreative ID Test'
+            removeCookie("kreative_id_key");
+            removeCookie("keychain_id");
             window.location.href = `https://id.kreativeusa.com/signin?aidn=${AIDN}&message=${error.message}`;
           })
           .internalError((error) => {
             // since there is something on the server side that isn't working reauthenticating wont work
             // instead we will redirect the user to an auth error page
+            removeCookie("kreative_id_key");
+            removeCookie("keychain_id");
             window.location.href = `https://id.kreativeusa.com/error?cause=ise&aidn=${AIDN}&message=${error.message}`;
+          })
+          .notFound((error) => {
+            // keychain not found, meaning that the keychain is expired
+            // relocates to signin page with the callback for 'Kreative ID Test'
+            removeCookie("kreative_id_key");
+            removeCookie("keychain_id");
+            window.location.href = `https://id.kreativeusa.com/signin?aidn=${AIDN}&message=${error.message}`;
           })
           .json((response) => {
             const account = response.data.account;
@@ -94,6 +107,8 @@ export default function AuthenticateComponent({ children, permissions }) {
           })
           .catch((error) => {
             // some sort of unknown error, possibly on the client side itself
+            removeCookie("kreative_id_key");
+            removeCookie("keychain_id");
             window.location.href = `https://id.kreativeusa.com/error?cause=unknown&aidn=${AIDN}&message=${error.message}`;
           });
       }
