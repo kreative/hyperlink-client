@@ -51,7 +51,7 @@ export default function FooterComponent() {
             className="hover:underline underline-offset-2 hover:text-indigo-700"
             target={"_blank"}
           >
-            Website made &hearts; with by Kreative Dreamflow.
+            Website made with &hearts; by Kreative Dreamflow.
           </Link>
         </p>
       </div>
